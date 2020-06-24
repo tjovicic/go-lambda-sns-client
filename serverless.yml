@@ -1,0 +1,31 @@
+service: go-lambda-sns-client
+
+provider:
+  name: aws
+  runtime: go1.x
+  stage: dev
+  region: eu-central-1
+  environment:
+    SNS_MESSAGE_TOPIC_ARN: ${self:custom.snsMessageTopicARN.${self:custom.stage}}
+  iamRoleStatements:
+    - Effect: 'Allow'
+      Action:
+        - 'sns:Publish'
+        - 'sns:GetTopicAttributes'
+      Resource: ${self:custom.snsMessageTopicARN.${self:custom.stage}}
+
+custom:
+  stage: ${opt:stage, self:provider.stage}
+  snsMessageTopicARN:
+    dev: arn:aws:sns:eu-central-1:128211995274:message-insert
+
+package:
+  include:
+    - './bin/**'
+  exclude:
+    - '**'
+
+functions:
+  main:
+    handler: bin/main
+    timeout: 120

@@ -1,0 +1,19 @@
+{
+  "name": "go-lambda-sns-client",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tjovicic/go-lambda-sns-client.git"
+  },
+  "scripts": {
+    "deploy-prod": "make deploy-prod",
+    "deploy-dev": "make deploy-dev"
+  },
+  "bugs": {
+    "url": "https://github.com/tjovicic/go-lambda-sns-client/issues"
+  },
+  "homepage": "https://github.com/tjovicic/go-lambda-sns-client#readme",
+  "devDependencies": {
+    "serverless": "^1.69.0"
+  }
+}
